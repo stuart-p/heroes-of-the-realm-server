@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/Stuart/Desktop/dotnetDating/dotnetDating.api/dotnetDating.api.csproj": {}
+    "/Users/Stuart/Coding/dotnetDating/dotnetDating.api/dotnetDating.api.csproj": {}
   },
   "projects": {
-    "/Users/Stuart/Desktop/dotnetDating/dotnetDating.api/dotnetDating.api.csproj": {
+    "/Users/Stuart/Coding/dotnetDating/dotnetDating.api/dotnetDating.api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/Stuart/Desktop/dotnetDating/dotnetDating.api/dotnetDating.api.csproj",
+        "projectUniqueName": "/Users/Stuart/Coding/dotnetDating/dotnetDating.api/dotnetDating.api.csproj",
         "projectName": "dotnetDating.api",
-        "projectPath": "/Users/Stuart/Desktop/dotnetDating/dotnetDating.api/dotnetDating.api.csproj",
+        "projectPath": "/Users/Stuart/Coding/dotnetDating/dotnetDating.api/dotnetDating.api.csproj",
         "packagesPath": "/Users/Stuart/.nuget/packages/",
-        "outputPath": "/Users/Stuart/Desktop/dotnetDating/dotnetDating.api/obj/",
+        "outputPath": "/Users/Stuart/Coding/dotnetDating/dotnetDating.api/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/Stuart/.nuget/NuGet/NuGet.Config"
