@@ -110,3 +110,11 @@
 /Users/Stuart/Coding/dotnetDating/dotnetDating.api/obj/Debug/netcoreapp3.1/staticwebassets/dotnetDating.api.StaticWebAssets.xml
 /Users/Stuart/Coding/dotnetDating/dotnetDating.api/obj/Debug/netcoreapp3.1/dotnetDating.api.dll
 /Users/Stuart/Coding/dotnetDating/dotnetDating.api/obj/Debug/netcoreapp3.1/dotnetDating.api.pdb
+/Users/Stuart/Coding/dotnetDating/dotnetDating.api/bin/Debug/netcoreapp3.1/Microsoft.IdentityModel.JsonWebTokens.dll
+/Users/Stuart/Coding/dotnetDating/dotnetDating.api/bin/Debug/netcoreapp3.1/Microsoft.IdentityModel.Logging.dll
+/Users/Stuart/Coding/dotnetDating/dotnetDating.api/bin/Debug/netcoreapp3.1/Microsoft.IdentityModel.Tokens.dll
+/Users/Stuart/Coding/dotnetDating/dotnetDating.api/bin/Debug/netcoreapp3.1/System.IdentityModel.Tokens.Jwt.dll
+/Users/Stuart/Coding/dotnetDating/dotnetDating.api/bin/Debug/netcoreapp3.1/Microsoft.AspNetCore.Authentication.JwtBearer.dll
+/Users/Stuart/Coding/dotnetDating/dotnetDating.api/bin/Debug/netcoreapp3.1/Microsoft.IdentityModel.Protocols.dll
+/Users/Stuart/Coding/dotnetDating/dotnetDating.api/bin/Debug/netcoreapp3.1/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+/Users/Stuart/Coding/dotnetDating/dotnetDating.api/bin/Debug/netcoreapp3.1/Newtonsoft.Json.dll
