@@ -40,6 +40,7 @@ namespace dotnetDating.api.Controllers
       var userToCreate = new User { Username = userForRegisterDTO.Username };
       var createdUser = await _repo.Register(userToCreate, userForRegisterDTO.Password);
 
+
       return StatusCode(201);
     }
 
