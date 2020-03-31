@@ -1,0 +1,72 @@
+[
+  {
+    "Username": "Allison",
+    "Password": "password",
+    "KnownAs": "Allison",
+    "Created": "2019-07-20",
+    "LastActive": "2019-07-20",
+    "Experience": 741,
+    "Level": 5,
+    "IsOnQuest": false,
+    "CharClass": "Cleric",
+    "profilePicture": {
+      "URL": "https://randomuser.me/api/portraits/lego/1.jpg"
+    }
+  },
+  {
+    "Username": "Helene",
+    "Password": "password",
+    "KnownAs": "Helene",
+    "Created": "2019-07-31",
+    "LastActive": "2019-07-31",
+    "Experience": 157,
+    "Level": 1,
+    "IsOnQuest": false,
+    "CharClass": "Barbarian",
+    "profilePicture": {
+      "URL": "https://randomuser.me/api/portraits/lego/5.jpg"
+    }
+  },
+  {
+    "Username": "Kimberley",
+    "Password": "password",
+    "KnownAs": "Kimberley",
+    "Created": "2019-03-29",
+    "LastActive": "2019-03-29",
+    "Experience": 1731,
+    "Level": 5,
+    "IsOnQuest": false,
+    "CharClass": "Barbarian",
+    "profilePicture": {
+      "URL": "https://randomuser.me/api/portraits/lego/5.jpg"
+    }
+  },
+  {
+    "Username": "Susana",
+    "Password": "password",
+    "KnownAs": "Susana",
+    "Created": "2019-08-01",
+    "LastActive": "2019-08-01",
+    "Experience": 928,
+    "Level": 2,
+    "IsOnQuest": false,
+    "CharClass": "Druid",
+    "profilePicture": {
+      "URL": "https://randomuser.me/api/portraits/lego/9.jpg"
+    }
+  },
+  {
+    "Username": "Pam",
+    "Password": "password",
+    "KnownAs": "Pam",
+    "Created": "2019-01-16",
+    "LastActive": "2019-01-16",
+    "Experience": 352,
+    "Level": 1,
+    "IsOnQuest": false,
+    "CharClass": "Cleric",
+    "profilePicture": {
+      "URL": "https://randomuser.me/api/portraits/lego/7.jpg"
+    }
+  }
+]

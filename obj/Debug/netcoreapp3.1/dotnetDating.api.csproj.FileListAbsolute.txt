@@ -118,3 +118,8 @@
 /Users/Stuart/Coding/dotnetDating/dotnetDating.api/bin/Debug/netcoreapp3.1/Microsoft.IdentityModel.Protocols.dll
 /Users/Stuart/Coding/dotnetDating/dotnetDating.api/bin/Debug/netcoreapp3.1/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 /Users/Stuart/Coding/dotnetDating/dotnetDating.api/bin/Debug/netcoreapp3.1/Newtonsoft.Json.dll
+/Users/Stuart/Coding/dotnetDating/dotnetDating.api/bin/Debug/netcoreapp3.1/Data/UserSeedData.json
+/Users/Stuart/Coding/dotnetDating/dotnetDating.api/bin/Debug/netcoreapp3.1/Data/QuestSeedData.json
+/Users/Stuart/Coding/dotnetDating/dotnetDating.api/bin/Debug/netcoreapp3.1/Microsoft.AspNetCore.JsonPatch.dll
+/Users/Stuart/Coding/dotnetDating/dotnetDating.api/bin/Debug/netcoreapp3.1/Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+/Users/Stuart/Coding/dotnetDating/dotnetDating.api/bin/Debug/netcoreapp3.1/Newtonsoft.Json.Bson.dll

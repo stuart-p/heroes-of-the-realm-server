@@ -9,5 +9,7 @@ namespace dotnetDating.api.Data
 
     public DbSet<Value> Values { get; set; }
     public DbSet<User> Users { get; set; }
+
+    public DbSet<Quest> Quests { get; set; }
   }
 }

@@ -35,9 +35,13 @@ namespace dotnetDating.api
     public void ConfigureServices(IServiceCollection services)
     {
       services.AddDbContext<DataContext>(options => options.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
-      services.AddControllers();
+      services.AddControllers().AddNewtonsoftJson(options =>
+      {
+        options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+      });
       services.AddCors();
       services.AddScoped<IAuthRepository, AuthRepository>();
+      services.AddScoped<IUserRepository, UserRepository>();
       services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
       {
         options.TokenValidationParameters = new TokenValidationParameters
