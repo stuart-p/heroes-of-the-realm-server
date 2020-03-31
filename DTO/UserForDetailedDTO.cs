@@ -22,7 +22,7 @@ namespace dotnetDating.api.DTO
 
     public int Experience { get; set; }
 
-    public ICollection<Quest> Quests { get; set; }
+    public ICollection<UserQuestListDTO> Quests { get; set; }
 
     public string PhotoURL { get; set; }
 

@@ -19,6 +19,7 @@ using System.Net;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Http;
 using dotnetDating.api.Helpers;
+using AutoMapper;
 
 namespace dotnetDating.api
 {
@@ -40,6 +41,7 @@ namespace dotnetDating.api
         options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
       });
       services.AddCors();
+      services.AddAutoMapper(typeof(UserRepository).Assembly);
       services.AddScoped<IAuthRepository, AuthRepository>();
       services.AddScoped<IUserRepository, UserRepository>();
       services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>

@@ -123,3 +123,5 @@
 /Users/Stuart/Coding/dotnetDating/dotnetDating.api/bin/Debug/netcoreapp3.1/Microsoft.AspNetCore.JsonPatch.dll
 /Users/Stuart/Coding/dotnetDating/dotnetDating.api/bin/Debug/netcoreapp3.1/Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
 /Users/Stuart/Coding/dotnetDating/dotnetDating.api/bin/Debug/netcoreapp3.1/Newtonsoft.Json.Bson.dll
+/Users/Stuart/Coding/dotnetDating/dotnetDating.api/bin/Debug/netcoreapp3.1/AutoMapper.dll
+/Users/Stuart/Coding/dotnetDating/dotnetDating.api/bin/Debug/netcoreapp3.1/AutoMapper.Extensions.Microsoft.DependencyInjection.dll
