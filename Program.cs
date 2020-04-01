@@ -21,6 +21,7 @@ namespace dotnetDating.api
         {
           var context = services.GetRequiredService<DataContext>();
           context.Database.Migrate();
+          Seed.SeedPhotos(context);
           Seed.SeedUsers(context);
           Seed.SeedQuests(context);
         }

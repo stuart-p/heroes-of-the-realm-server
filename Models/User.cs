@@ -38,7 +38,7 @@ namespace dotnetDating.api.Models
 
     public ICollection<Quest> Quests { get; set; }
 
-    public Photo ProfilePicture { get; set; }
+    public Avatar Avatar { get; set; }
 
     public bool IsOnQuest { get; set; }
   }

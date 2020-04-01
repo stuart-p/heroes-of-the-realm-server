@@ -9,8 +9,8 @@ using dotnetDating.api.Data;
 namespace dotnetDating.api.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20200330223529_QuestClass")]
-    partial class QuestClass
+    [Migration("20200331225313_photoTable")]
+    partial class photoTable
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -18,7 +18,7 @@ namespace dotnetDating.api.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.1.2");
 
-            modelBuilder.Entity("dotnetDating.api.Models.Photo", b =>
+            modelBuilder.Entity("dotnetDating.api.Models.Avatar", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -27,15 +27,9 @@ namespace dotnetDating.api.Migrations
                     b.Property<string>("URL")
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("INTEGER");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("UserId")
-                        .IsUnique();
-
-                    b.ToTable("Photo");
+                    b.ToTable("Avatars");
                 });
 
             modelBuilder.Entity("dotnetDating.api.Models.Quest", b =>
@@ -81,6 +75,9 @@ namespace dotnetDating.api.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<int?>("AvatarId")
+                        .HasColumnType("INTEGER");
+
                     b.Property<int>("CharClass")
                         .HasColumnType("INTEGER");
 
@@ -113,6 +110,8 @@ namespace dotnetDating.api.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("AvatarId");
+
                     b.ToTable("Users");
                 });
 
@@ -130,20 +129,18 @@ namespace dotnetDating.api.Migrations
                     b.ToTable("Values");
                 });
 
-            modelBuilder.Entity("dotnetDating.api.Models.Photo", b =>
-                {
-                    b.HasOne("dotnetDating.api.Models.User", "user")
-                        .WithOne("ProfilePicture")
-                        .HasForeignKey("dotnetDating.api.Models.Photo", "UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("dotnetDating.api.Models.Quest", b =>
                 {
                     b.HasOne("dotnetDating.api.Models.User", null)
                         .WithMany("Quests")
                         .HasForeignKey("UserId");
+                });
+
+            modelBuilder.Entity("dotnetDating.api.Models.User", b =>
+                {
+                    b.HasOne("dotnetDating.api.Models.Avatar", "Avatar")
+                        .WithMany("Users")
+                        .HasForeignKey("AvatarId");
                 });
 #pragma warning restore 612, 618
         }

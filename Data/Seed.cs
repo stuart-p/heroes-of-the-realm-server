@@ -46,6 +46,22 @@ namespace dotnetDating.api.Data
       }
     }
 
+    public static void SeedPhotos(DataContext context)
+    {
+      if (!context.Avatars.Any())
+      {
+        var AvatarData = System.IO.File.ReadAllText("Data/AvatarSeedData.json");
+        var Avatars = JsonConvert.DeserializeObject<List<Avatar>>(AvatarData);
+
+        foreach (var Avatar in Avatars)
+        {
+          context.Avatars.Add(Avatar);
+        }
+
+        context.SaveChanges();
+      }
+    }
+
     private static void createPasswordHash(string password, out byte[] passwordHash, out byte[] passwordSalt)
     {
       using (var hmac = new System.Security.Cryptography.HMACSHA512())

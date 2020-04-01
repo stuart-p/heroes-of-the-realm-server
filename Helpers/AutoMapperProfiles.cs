@@ -8,8 +8,8 @@ namespace dotnetDating.api.Helpers
   {
     public AutoMapperProfiles()
     {
-      CreateMap<User, UserForListDTO>().ForMember(destination => destination.PhotoURL, options => options.MapFrom(src => src.ProfilePicture.URL));
-      CreateMap<User, UserForDetailedDTO>().ForMember(destination => destination.PhotoURL, options => options.MapFrom(src => src.ProfilePicture.URL));
+      CreateMap<User, UserForListDTO>().ForMember(destination => destination.PhotoURL, options => options.MapFrom(src => src.Avatar.URL));
+      CreateMap<User, UserForDetailedDTO>().ForMember(destination => destination.PhotoURL, options => options.MapFrom(src => src.Avatar.URL));
       CreateMap<Quest, UserQuestListDTO>();
     }
   }

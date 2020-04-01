@@ -9,8 +9,8 @@
     "Level": 5,
     "IsOnQuest": false,
     "CharClass": "Cleric",
-    "profilePicture": {
-      "URL": "https://randomuser.me/api/portraits/lego/1.jpg"
+    "Avatar": {
+      "URL": "https://randomuser.me/api/portraits/lego/2.jpg"
     }
   },
   {
@@ -23,8 +23,8 @@
     "Level": 1,
     "IsOnQuest": false,
     "CharClass": "Barbarian",
-    "profilePicture": {
-      "URL": "https://randomuser.me/api/portraits/lego/5.jpg"
+    "Avatar": {
+      "URL": "https://randomuser.me/api/portraits/lego/2.jpg"
     }
   },
   {
@@ -37,8 +37,8 @@
     "Level": 5,
     "IsOnQuest": false,
     "CharClass": "Barbarian",
-    "profilePicture": {
-      "URL": "https://randomuser.me/api/portraits/lego/5.jpg"
+    "Avatar": {
+      "URL": "https://randomuser.me/api/portraits/lego/2.jpg"
     }
   },
   {
@@ -51,8 +51,8 @@
     "Level": 2,
     "IsOnQuest": false,
     "CharClass": "Druid",
-    "profilePicture": {
-      "URL": "https://randomuser.me/api/portraits/lego/9.jpg"
+    "Avatar": {
+      "URL": "https://randomuser.me/api/portraits/lego/2.jpg"
     }
   },
   {
@@ -65,8 +65,8 @@
     "Level": 1,
     "IsOnQuest": false,
     "CharClass": "Cleric",
-    "profilePicture": {
-      "URL": "https://randomuser.me/api/portraits/lego/7.jpg"
+    "Avatar": {
+      "URL": "https://randomuser.me/api/portraits/lego/2.jpg"
     }
   }
 ]
