@@ -44,6 +44,8 @@ namespace dotnetDating.api
       services.AddAutoMapper(typeof(UserRepository).Assembly);
       services.AddScoped<IAuthRepository, AuthRepository>();
       services.AddScoped<IUserRepository, UserRepository>();
+      services.AddScoped<IAvatarRepository, AvatarRepository>();
+      services.AddScoped<IQuestRepository, QuestRepository>();
       services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
       {
         options.TokenValidationParameters = new TokenValidationParameters
