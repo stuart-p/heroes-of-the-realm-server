@@ -56,9 +56,11 @@ namespace dotnetDating.api.Data
       throw new System.NotImplementedException();
     }
 
-    public Task<Quest> GetQuest(int id)
+    public async Task<Quest> GetQuest(int id)
     {
-      throw new System.NotImplementedException();
+      var quest = await _context.Quests.FirstOrDefaultAsync(quest => quest.Id == id);
+
+      return quest;
     }
 
     public Task<IEnumerable<Quest>> getQuests()

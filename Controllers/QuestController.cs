@@ -26,6 +26,14 @@ namespace dotnetDating.api.Controllers
       return Ok(quests);
     }
 
+    [HttpGet("{id}")]
+    public async Task<IActionResult> getQuest(int id)
+    {
+      var quest = await _repo.GetQuest(id);
+
+      return Ok(quest);
+    }
+
     [HttpPatch("{id}")]
     public async Task<IActionResult> BeginQuest(int id, [FromBody] BeginQuestRequestDTO patchDTO)
     {

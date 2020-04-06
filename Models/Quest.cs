@@ -18,6 +18,6 @@ namespace dotnetDating.api.Models
 
     public long Duration { get; set; }
 
-
+    public User AssignedUser { get; set; }
   }
 }

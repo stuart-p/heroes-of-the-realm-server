@@ -21,7 +21,7 @@ namespace dotnetDating.api.Data
           user.PasswordHash = passwordHash;
           user.PasswordSalt = passwordSalt;
           user.Username = user.Username.ToLower();
-
+          user.Avatar = context.Avatars.FirstOrDefault(avatar => avatar.Id == user.Avatar.Id);
           context.Users.Add(user);
 
         }

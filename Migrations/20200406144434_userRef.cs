@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace dotnetDating.api.Migrations
 {
-    public partial class photoTable : Migration
+    public partial class userRef : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -62,23 +62,23 @@ namespace dotnetDating.api.Migrations
                     Completed = table.Column<DateTime>(nullable: false),
                     Experience = table.Column<int>(nullable: false),
                     Duration = table.Column<long>(nullable: false),
-                    UserId = table.Column<int>(nullable: true)
+                    AssignedUserId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Quests", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Quests_Users_UserId",
-                        column: x => x.UserId,
+                        name: "FK_Quests_Users_AssignedUserId",
+                        column: x => x.AssignedUserId,
                         principalTable: "Users",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Quests_UserId",
+                name: "IX_Quests_AssignedUserId",
                 table: "Quests",
-                column: "UserId");
+                column: "AssignedUserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Users_AvatarId",

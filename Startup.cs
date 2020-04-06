@@ -43,8 +43,8 @@ namespace dotnetDating.api
       services.AddCors();
       services.AddAutoMapper(typeof(UserRepository).Assembly);
       services.AddScoped<IAuthRepository, AuthRepository>();
-      services.AddScoped<IUserRepository, UserRepository>();
       services.AddScoped<IAvatarRepository, AvatarRepository>();
+      services.AddScoped<IUserRepository, UserRepository>();
       services.AddScoped<IQuestRepository, QuestRepository>();
       services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
       {

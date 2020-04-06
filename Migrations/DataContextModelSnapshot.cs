@@ -36,6 +36,9 @@ namespace dotnetDating.api.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<int?>("AssignedUserId")
+                        .HasColumnType("INTEGER");
+
                     b.Property<DateTime>("Completed")
                         .HasColumnType("TEXT");
 
@@ -51,9 +54,6 @@ namespace dotnetDating.api.Migrations
                     b.Property<string>("Title")
                         .HasColumnType("TEXT");
 
-                    b.Property<int?>("UserId")
-                        .HasColumnType("INTEGER");
-
                     b.Property<bool>("isComplete")
                         .HasColumnType("INTEGER");
 
@@ -62,7 +62,7 @@ namespace dotnetDating.api.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("AssignedUserId");
 
                     b.ToTable("Quests");
                 });
@@ -129,9 +129,9 @@ namespace dotnetDating.api.Migrations
 
             modelBuilder.Entity("dotnetDating.api.Models.Quest", b =>
                 {
-                    b.HasOne("dotnetDating.api.Models.User", null)
+                    b.HasOne("dotnetDating.api.Models.User", "AssignedUser")
                         .WithMany("Quests")
-                        .HasForeignKey("UserId");
+                        .HasForeignKey("AssignedUserId");
                 });
 
             modelBuilder.Entity("dotnetDating.api.Models.User", b =>
