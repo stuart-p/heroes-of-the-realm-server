@@ -1,4 +1,6 @@
+using System.Collections.Generic;
 using System.Threading.Tasks;
+using AutoMapper;
 using dotnetDating.api.Data;
 using dotnetDating.api.DTO;
 using Microsoft.AspNetCore.Authorization;
@@ -12,8 +14,10 @@ namespace dotnetDating.api.Controllers
   public class QuestController : ControllerBase
   {
     private readonly IQuestRepository _repo;
-    public QuestController(IQuestRepository repo)
+    private readonly IMapper _mapper;
+    public QuestController(IQuestRepository repo, IMapper mapper)
     {
+      this._mapper = mapper;
       this._repo = repo;
 
     }
@@ -30,8 +34,8 @@ namespace dotnetDating.api.Controllers
     public async Task<IActionResult> getQuest(int id)
     {
       var quest = await _repo.GetQuest(id);
-
-      return Ok(quest);
+      var questToReturn = _mapper.Map<QuestDetailDTO>(quest);
+      return Ok(questToReturn);
     }
 
     [HttpPatch("{id}")]

@@ -11,6 +11,7 @@ namespace dotnetDating.api.Helpers
       CreateMap<User, UserForListDTO>().ForMember(destination => destination.PhotoURL, options => options.MapFrom(src => src.Avatar.URL));
       CreateMap<User, UserForDetailedDTO>().ForMember(destination => destination.PhotoURL, options => options.MapFrom(src => src.Avatar.URL));
       CreateMap<Quest, UserQuestListDTO>();
+      CreateMap<Quest, QuestDetailDTO>().ForMember(destination => destination.AssignedUser, options => options.MapFrom(src => src.AssignedUser.KnownAs));
     }
   }
 }

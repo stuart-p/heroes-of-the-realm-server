@@ -15,9 +15,11 @@ namespace dotnetDating.api.Controllers
   {
     private readonly IUserRepository _repo;
     private readonly IMapper _mapper;
+    private readonly IQuestRepository _questRepo;
 
-    public UsersController(IUserRepository repo, IMapper mapper)
+    public UsersController(IUserRepository repo, IMapper mapper, IQuestRepository questRepo)
     {
+      this._questRepo = questRepo;
       this._mapper = mapper;
       this._repo = repo;
     }
@@ -39,6 +41,14 @@ namespace dotnetDating.api.Controllers
 
       var userToReturn = _mapper.Map<UserForDetailedDTO>(user);
       return Ok(userToReturn);
+    }
+
+    [HttpGet("{id}/quests")]
+    public async Task<IActionResult> GetUsersQuests(int id)
+    {
+      var quests = await _questRepo.getAdventurersQuests(id);
+
+      return Ok(quests);
     }
   }
 }

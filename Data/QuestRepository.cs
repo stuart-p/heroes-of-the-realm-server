@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using dotnetDating.api.Models;
 using Microsoft.EntityFrameworkCore;
+using dotnetDating.api.Helpers;
 
 namespace dotnetDating.api.Data
 {
@@ -20,11 +21,13 @@ namespace dotnetDating.api.Data
       var quest = await _context.Quests.FirstOrDefaultAsync(quest => quest.Id == id);
       if (quest != null)
       {
-        DateTime now = DateTime.Now;
-        now.AddSeconds((double)quest.Duration);
+        DateTime completionTime = DateTime.Now.AddSeconds((double)quest.Duration);
 
         quest.isInProgress = true;
-        quest.Completed = now;
+        quest.Completed = completionTime;
+        quest.AssignedUser = await _context.Users.FirstOrDefaultAsync(user => user.Id == adventurerId);
+
+        quest.AssignedUser.IsOnQuest = true;
 
         return await _context.SaveChangesAsync() > 0;
       }
@@ -34,14 +37,31 @@ namespace dotnetDating.api.Data
       }
     }
 
-    public Task<bool> CompleteQuest(int id)
+    public async Task<bool> CompleteQuest(int id)
     {
-      throw new System.NotImplementedException();
+      var quest = await _context.Quests.FirstOrDefaultAsync(quest => quest.Id == id);
+      if (quest != null)
+      {
+
+        quest.isInProgress = false;
+        quest.isComplete = true;
+
+        quest.AssignedUser.IsOnQuest = false;
+
+        return await _context.SaveChangesAsync() > 0;
+      }
+      else
+      {
+        return false;
+      }
     }
 
-    public Task<bool> CreateNewQuest()
+    public async Task<bool> CreateNewQuest()
     {
-      throw new System.NotImplementedException();
+      var newQuest = QuestHelper.generateQuest();
+      await _context.Quests.AddAsync(newQuest);
+
+      return await _context.SaveChangesAsync() > 0;
     }
 
     public async Task<IEnumerable<Quest>> getActiveQuests()
@@ -51,14 +71,21 @@ namespace dotnetDating.api.Data
       return quests;
     }
 
-    public Task<IEnumerable<Quest>> getAdventurersQuests(int adventurerId)
+    public async Task<IEnumerable<Quest>> getAdventurersQuests(int adventurerId)
     {
-      throw new System.NotImplementedException();
+      var user = await _context.Users.FirstOrDefaultAsync(user => user.Id == adventurerId);
+      if (user != null)
+      {
+
+        var quests = user.Quests.ToList();
+        return quests;
+      }
+      else return null;
     }
 
     public async Task<Quest> GetQuest(int id)
     {
-      var quest = await _context.Quests.FirstOrDefaultAsync(quest => quest.Id == id);
+      var quest = await _context.Quests.Include(quest => quest.AssignedUser).FirstOrDefaultAsync(quest => quest.Id == id);
 
       return quest;
     }
