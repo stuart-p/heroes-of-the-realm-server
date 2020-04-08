@@ -86,5 +86,23 @@ namespace dotnetDating.api.Helpers
 
       return newQuest;
     }
+    public static int checkAdventurerLevel(int experience)
+    {
+      Dictionary<int, int> levelBands = new Dictionary<int, int>(){
+      {0, -1},{1, 100}, {2, 250}, {3, 500}, {4, 1000},{5, 1500}, {6, 2500}, {7, 4000}, {8, 6000}, {9, 8000}, {10, 10000}, {11, 12000}, {12, 14000}
+    };
+
+      foreach (KeyValuePair<int, int> entry in levelBands)
+      {
+        if (experience < entry.Value)
+        {
+          return entry.Key;
+        }
+      }
+      return 1;
+
+
+    }
   }
+
 }

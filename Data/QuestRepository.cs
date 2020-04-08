@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using dotnetDating.api.Models;
 using Microsoft.EntityFrameworkCore;
 using dotnetDating.api.Helpers;
+using System.Diagnostics;
 
 namespace dotnetDating.api.Data
 {
@@ -21,15 +22,23 @@ namespace dotnetDating.api.Data
       var quest = await _context.Quests.FirstOrDefaultAsync(quest => quest.Id == id);
       if (quest != null)
       {
-        DateTime completionTime = DateTime.Now.AddSeconds((double)quest.Duration);
+        var adventurer = await _context.Users.FirstOrDefaultAsync(User => User.Id == adventurerId);
 
-        quest.isInProgress = true;
-        quest.Completed = completionTime;
-        quest.AssignedUser = await _context.Users.FirstOrDefaultAsync(user => user.Id == adventurerId);
+        if (!adventurer.IsOnQuest)
+        {
+          DateTime startedTime = DateTime.Now;
+          DateTime completionTime = DateTime.Now.AddSeconds((double)quest.Duration);
 
-        quest.AssignedUser.IsOnQuest = true;
+          quest.isInProgress = true;
+          quest.Started = startedTime;
+          quest.Completed = completionTime;
+          quest.AssignedUser = adventurer;
 
-        return await _context.SaveChangesAsync() > 0;
+          quest.AssignedUser.IsOnQuest = true;
+          return await _context.SaveChangesAsync() > 0;
+        }
+        else return false;
+
       }
       else
       {
@@ -39,16 +48,23 @@ namespace dotnetDating.api.Data
 
     public async Task<bool> CompleteQuest(int id)
     {
-      var quest = await _context.Quests.FirstOrDefaultAsync(quest => quest.Id == id);
+      var quest = await _context.Quests.Include(quest => quest.AssignedUser).FirstOrDefaultAsync(quest => quest.Id == id);
       if (quest != null)
       {
+        if (quest.Completed != null && quest.Completed <= DateTime.Now)
+        {
 
-        quest.isInProgress = false;
-        quest.isComplete = true;
+          quest.isInProgress = false;
+          quest.isComplete = true;
 
-        quest.AssignedUser.IsOnQuest = false;
+          quest.AssignedUser.IsOnQuest = false;
+          quest.AssignedUser.Experience += quest.Experience;
+          quest.AssignedUser.Level = QuestHelper.checkAdventurerLevel(quest.AssignedUser.Experience);
 
-        return await _context.SaveChangesAsync() > 0;
+          return await _context.SaveChangesAsync() > 0;
+        }
+        else return false;
+
       }
       else
       {

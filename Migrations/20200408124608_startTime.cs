@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace dotnetDating.api.Migrations
 {
-    public partial class userRef : Migration
+    public partial class startTime : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -59,7 +59,8 @@ namespace dotnetDating.api.Migrations
                     Created = table.Column<DateTime>(nullable: false),
                     isInProgress = table.Column<bool>(nullable: false),
                     isComplete = table.Column<bool>(nullable: false),
-                    Completed = table.Column<DateTime>(nullable: false),
+                    Started = table.Column<DateTime>(nullable: true),
+                    Completed = table.Column<DateTime>(nullable: true),
                     Experience = table.Column<int>(nullable: false),
                     Duration = table.Column<long>(nullable: false),
                     AssignedUserId = table.Column<int>(nullable: true)

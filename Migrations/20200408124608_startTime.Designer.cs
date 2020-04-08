@@ -9,8 +9,8 @@ using dotnetDating.api.Data;
 namespace dotnetDating.api.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20200406144434_userRef")]
-    partial class userRef
+    [Migration("20200408124608_startTime")]
+    partial class startTime
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -41,7 +41,7 @@ namespace dotnetDating.api.Migrations
                     b.Property<int?>("AssignedUserId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<DateTime>("Completed")
+                    b.Property<DateTime?>("Completed")
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("Created")
@@ -52,6 +52,9 @@ namespace dotnetDating.api.Migrations
 
                     b.Property<int>("Experience")
                         .HasColumnType("INTEGER");
+
+                    b.Property<DateTime?>("Started")
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Title")
                         .HasColumnType("TEXT");

@@ -1,8 +1,10 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using dotnetDating.api.Data;
 using dotnetDating.api.DTO;
+using dotnetDating.api.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -38,7 +40,7 @@ namespace dotnetDating.api.Controllers
       return Ok(questToReturn);
     }
 
-    [HttpPatch("{id}")]
+    [HttpPatch("{id}/begin")]
     public async Task<IActionResult> BeginQuest(int id, [FromBody] BeginQuestRequestDTO patchDTO)
     {
       bool requestValid = await _repo.BeginQuest(id, patchDTO.UserID);
@@ -47,7 +49,35 @@ namespace dotnetDating.api.Controllers
       {
         return Accepted();
       }
-      else return Unauthorized();
+      else return BadRequest();
+    }
+
+    [HttpPost("new")]
+    public async Task<IActionResult> CreateNewQuest()
+    {
+      var currentQuests = await _repo.getActiveQuests();
+      if (currentQuests.Count() <= 6)
+      {
+        bool attemptCreate = await _repo.CreateNewQuest();
+
+        if (attemptCreate)
+        {
+          return Accepted();
+        }
+        else return BadRequest();
+      }
+      else return BadRequest();
+    }
+
+    [HttpPatch("{id}/complete")]
+    public async Task<IActionResult> CompleteInProgressQuest(int id)
+    {
+      bool attemptComplete = await _repo.CompleteQuest(id);
+      if (attemptComplete)
+      {
+        return Accepted();
+      }
+      else return BadRequest();
     }
   }
 }

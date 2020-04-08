@@ -77,7 +77,8 @@ namespace dotnetDating.api.Controllers
 
       return Ok(new
       {
-        token = tokenHandler.WriteToken(token)
+        token = tokenHandler.WriteToken(token),
+        timeStamp = DateTime.Now
       });
     }
   }

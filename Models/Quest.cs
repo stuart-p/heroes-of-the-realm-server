@@ -12,7 +12,8 @@ namespace dotnetDating.api.Models
     public bool isInProgress { get; set; }
     public bool isComplete { get; set; }
 
-    public DateTime Completed { get; set; }
+    public DateTime? Started { get; set; }
+    public DateTime? Completed { get; set; }
 
     public int Experience { get; set; }
 

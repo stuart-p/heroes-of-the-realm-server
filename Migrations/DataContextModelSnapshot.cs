@@ -39,7 +39,7 @@ namespace dotnetDating.api.Migrations
                     b.Property<int?>("AssignedUserId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<DateTime>("Completed")
+                    b.Property<DateTime?>("Completed")
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("Created")
@@ -50,6 +50,9 @@ namespace dotnetDating.api.Migrations
 
                     b.Property<int>("Experience")
                         .HasColumnType("INTEGER");
+
+                    b.Property<DateTime?>("Started")
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Title")
                         .HasColumnType("TEXT");
