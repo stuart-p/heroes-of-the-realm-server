@@ -70,7 +70,7 @@ namespace dotnetDating.api.Helpers
 
     private static long genQuestDuration(int Experience)
     {
-      return Experience * 4;
+      return (long)Math.Max(20, Math.Round((double)Experience / 4));
     }
 
     public static Quest generateQuest()
