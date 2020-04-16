@@ -18,9 +18,11 @@ namespace dotnetDating.api.Controllers
   {
     private readonly IAuthRepository _repo;
     private readonly IConfiguration _config;
+    private readonly IAvatarRepository _avatarRepo;
 
-    public AuthController(IAuthRepository repo, IConfiguration config)
+    public AuthController(IAuthRepository repo, IConfiguration config, IAvatarRepository avatarRepo)
     {
+      this._avatarRepo = avatarRepo;
       this._config = config;
       this._repo = repo;
     }
@@ -36,8 +38,8 @@ namespace dotnetDating.api.Controllers
       {
         return BadRequest("Username already exists");
       }
-
-      var userToCreate = new User { Username = userForRegisterDTO.Username };
+      var defaultAvatar = await _avatarRepo.GetAvatar(1);
+      var userToCreate = new User { Username = userForRegisterDTO.Username, KnownAs = userForRegisterDTO.Username, CharClass = CharacterClass.Barbarian, Created = DateTime.Now, LastActive = DateTime.Now, Avatar = defaultAvatar };
       var createdUser = await _repo.Register(userToCreate, userForRegisterDTO.Password);
 
 

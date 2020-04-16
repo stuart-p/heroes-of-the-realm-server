@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using AutoMapper;
 using dotnetDating.api.Data;
@@ -16,9 +18,11 @@ namespace dotnetDating.api.Controllers
     private readonly IUserRepository _repo;
     private readonly IMapper _mapper;
     private readonly IQuestRepository _questRepo;
+    private readonly IAvatarRepository _avatarRepo;
 
-    public UsersController(IUserRepository repo, IMapper mapper, IQuestRepository questRepo)
+    public UsersController(IUserRepository repo, IMapper mapper, IQuestRepository questRepo, IAvatarRepository avatarRepo)
     {
+      this._avatarRepo = avatarRepo;
       this._questRepo = questRepo;
       this._mapper = mapper;
       this._repo = repo;
@@ -49,6 +53,25 @@ namespace dotnetDating.api.Controllers
       var quests = await _questRepo.getAdventurersQuests(id);
 
       return Ok(quests);
+    }
+
+    [HttpPut("{id}")]
+    public async Task<IActionResult> UpdateUserDetails(int id, UpdateUserDetailsDTO updateUserDetailsDTO)
+    {
+      if (id != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
+      {
+        return Unauthorized();
+      }
+      var user = await _repo.GetUser(id);
+      _mapper.Map(updateUserDetailsDTO, user);
+      user.Avatar = await _avatarRepo.GetAvatar(updateUserDetailsDTO.avatarID);
+
+      if (await _repo.SaveAll())
+      {
+        return NoContent();
+      }
+
+      throw new Exception($"Updating user {id} failed on save");
     }
   }
 }

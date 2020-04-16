@@ -16,6 +16,10 @@ namespace dotnetDating.api.Data
     }
     public async Task<Avatar> GetAvatar(int id)
     {
+      int firstAvatar = 1;
+      int lastAvatar = await _context.Avatars.CountAsync();
+      if (id < firstAvatar) id = lastAvatar;
+      if (id > lastAvatar) id = firstAvatar;
       var avatar = await _context.Avatars.FirstOrDefaultAsync(av => av.Id == id);
 
       return avatar;

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using dotnetDating.api.Models;
 using Microsoft.EntityFrameworkCore;
@@ -26,13 +27,13 @@ namespace dotnetDating.api.Data
     public async Task<User> GetUser(int id)
     {
       var user = await _context.Users.Include(p => p.Avatar).Include(q => q.Quests).FirstOrDefaultAsync(u => u.Id == id);
-
+      user.Quests = user.Quests.OrderByDescending(q => q.Completed).ToList();
       return user;
     }
 
     public async Task<IEnumerable<User>> GetUsers()
     {
-      var users = await _context.Users.Include(p => p.Avatar).ToListAsync();
+      var users = await _context.Users.Include(p => p.Avatar).OrderByDescending(p => p.Experience).ToListAsync();
 
       return users;
     }
