@@ -24,6 +24,25 @@ namespace dotnetDating.api.Data
 
       return avatar;
     }
+    public async Task<Avatar> GetAvatarByURL(string url)
+    {
+      var avatar = await _context.Avatars.FirstOrDefaultAsync(av => av.URL == url);
+
+      return avatar;
+    }
+
+    public async Task<Avatar> GetSequenceAvatarByURL(string url, bool isNext)
+    {
+      var currentAvatar = await _context.Avatars.FirstOrDefaultAsync(av => av.URL == url);
+      int desiredAvatarID = 1;
+      if (currentAvatar != null)
+      {
+        desiredAvatarID = isNext ? currentAvatar.Id + 1 : currentAvatar.Id - 1;
+      }
+      var desiredAvatar = await GetAvatar(desiredAvatarID);
+
+      return desiredAvatar;
+    }
 
     public async Task<IEnumerable<Avatar>> getAvatars()
     {

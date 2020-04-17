@@ -64,7 +64,7 @@ namespace dotnetDating.api.Controllers
       }
       var user = await _repo.GetUser(id);
       _mapper.Map(updateUserDetailsDTO, user);
-      user.Avatar = await _avatarRepo.GetAvatar(updateUserDetailsDTO.avatarID);
+      user.Avatar = await _avatarRepo.GetAvatarByURL(updateUserDetailsDTO.avatarURL);
 
       if (await _repo.SaveAll())
       {

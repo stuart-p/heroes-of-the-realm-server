@@ -1,5 +1,6 @@
 using System.Threading.Tasks;
 using dotnetDating.api.Data;
+using dotnetDating.api.DTO;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -31,6 +32,15 @@ namespace dotnetDating.api.Controllers
       var avatar = await _repo.GetAvatar(id);
 
       return Ok(avatar);
+    }
+
+    [HttpPost("newAvatar")]
+    public async Task<IActionResult> getSequenceAvatarByURL(RequestSequenceAvatarUrlDTO requestSequenceAvatar)
+    {
+
+      var avatar = await _repo.GetSequenceAvatarByURL(requestSequenceAvatar.currentURL, requestSequenceAvatar.isNext);
+
+      return Ok(new { AvatarURL = avatar.URL });
     }
   }
 }
