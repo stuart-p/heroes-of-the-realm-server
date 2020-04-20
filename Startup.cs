@@ -32,10 +32,21 @@ namespace dotnetDating.api
 
     public IConfiguration Configuration { get; }
 
-    // This method gets called by the runtime. Use this method to add services to the container.
+    public void ConfigureDevelopmentServices(IServiceCollection services)
+    {
+      // services.AddDbContext<DataContext>(options => options.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
+      services.AddDbContext<DataContext>(options => options.UseMySql(Configuration.GetConnectionString("DefaultConnection")));
+
+      ConfigureServices(services);
+    }
+
+    public void ConfigureProductionServices(IServiceCollection services)
+    {
+      services.AddDbContext<DataContext>(options => options.UseMySql(Configuration.GetConnectionString("DefaultConnection")));
+      ConfigureServices(services);
+    }
     public void ConfigureServices(IServiceCollection services)
     {
-      services.AddDbContext<DataContext>(options => options.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
       services.AddControllers().AddNewtonsoftJson(options =>
       {
         options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
@@ -88,9 +99,13 @@ namespace dotnetDating.api
       app.UseAuthentication();
       app.UseAuthorization();
 
+      app.UseDefaultFiles();
+      app.UseStaticFiles();
+
       app.UseEndpoints(endpoints =>
       {
         endpoints.MapControllers();
+        endpoints.MapFallbackToController("Index", "Fallback");
       });
     }
   }

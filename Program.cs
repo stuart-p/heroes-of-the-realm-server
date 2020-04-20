@@ -23,7 +23,7 @@ namespace dotnetDating.api
           context.Database.Migrate();
           Seed.SeedPhotos(context);
           Seed.SeedUsers(context);
-          Seed.SeedQuests(context);
+          // Seed.SeedQuests(context);
         }
         catch (Exception ex)
         {
