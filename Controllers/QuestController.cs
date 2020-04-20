@@ -49,7 +49,7 @@ namespace dotnetDating.api.Controllers
       {
         return Accepted();
       }
-      else return BadRequest();
+      else return BadRequest("Only 1 quest at a time can be attempted");
     }
 
     [HttpPost("new")]
@@ -77,7 +77,7 @@ namespace dotnetDating.api.Controllers
       {
         return Accepted();
       }
-      else return BadRequest();
+      else return BadRequest("Quest could not complete at this time");
     }
   }
 }
