@@ -1,10 +1,9 @@
 ﻿using System;
-using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace dotnetDating.api.Migrations
 {
-    public partial class initialMySql : Migration
+    public partial class initialSqlServer : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -22,15 +21,14 @@ namespace dotnetDating.api.Migrations
                 nullable: false,
                 oldClrType: typeof(int),
                 oldType: "INTEGER")
-                .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn)
-                .OldAnnotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn);
+                .Annotation("SqlServer:Identity", "1, 1");
 
             migrationBuilder.CreateTable(
                 name: "Avatars",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     URL = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -43,7 +41,7 @@ namespace dotnetDating.api.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Username = table.Column<string>(nullable: true),
                     PasswordHash = table.Column<byte[]>(nullable: true),
                     PasswordSalt = table.Column<byte[]>(nullable: true),
@@ -72,7 +70,7 @@ namespace dotnetDating.api.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Title = table.Column<string>(nullable: true),
                     Created = table.Column<DateTime>(nullable: false),
                     isInProgress = table.Column<bool>(nullable: false),
@@ -130,8 +128,7 @@ namespace dotnetDating.api.Migrations
                 type: "INTEGER",
                 nullable: false,
                 oldClrType: typeof(int))
-                .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn)
-                .OldAnnotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn);
+                .OldAnnotation("SqlServer:Identity", "1, 1");
         }
     }
 }
