@@ -35,7 +35,7 @@ namespace dotnetDating.api
     public void ConfigureDevelopmentServices(IServiceCollection services)
     {
       // services.AddDbContext<DataContext>(options => options.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
-      services.AddDbContext<DataContext>(options => options.UseMySql(Configuration.GetConnectionString("DefaultConnection")));
+      services.AddDbContext<DataContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
       ConfigureServices(services);
     }

@@ -10,8 +10,8 @@ using dotnetDating.api.Data;
 namespace dotnetDating.api.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20200421113826_initialSqlServer")]
-    partial class initialSqlServer
+    [Migration("20200421120431_initialSqlServerRemote")]
+    partial class initialSqlServerRemote
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
